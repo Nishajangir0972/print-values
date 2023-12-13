@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Object Value in Loop</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <input type="text" placeholder="Enter value for Iteration" />
+        <button>Start Iteration</button>
+        <p></p>
+    </div>
+    <script>
+        const input = document.querySelector("input");
+        const btn = document.querySelector("button");
+        const output = document.querySelector("p")
+
+
+        const person = {
+            name: "Nisha jangir",
+            age: 21,
+            gender:"Female",
+            rollno: 22
+        }
+
+        let i;
+       const value = Object.keys(person)
+        btn.addEventListener("click", showData)
+
+        function showData(){
+            const inputValue = input.value
+            if(inputValue === ""){
+                alert("please enter the value")
+            }
+          else { 
+            i = Number(inputValue)
+            recurssion()
+        }
+        }
+
+        function recurssion(){
+            output.innerHTML = "" ;
+            let j = 0;
+        const timer =  setInterval(()=>{
+            if(j === value.length){
+                clearInterval(timer)
+                if(--i >0){recurssion()}
+                
+            }
+            
+            else{
+                output.innerHTML += person[value[j++]] + "<br>"
+                
+            }
+            
+           },1000)
+
+        }
+
+    </script>
+</body>
+
+</html>
